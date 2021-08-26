@@ -1,23 +1,20 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/app.css">
-    <title>My Blog</title>
-</head>
-<body>
+@extends('layout')
 
 
-
-<article>
-
-    <?= $post; ?>
+@section('content')
 
 
-</article>
+    <article>
+
+        <h1> {{$post->title}}</h1>
+
+        <div>
+            {!! $post->body !!}
+        </div>
 
 
-<a href="/"> GO Back</a>
+    </article>
 
-</body>
-</html>
+
+    <a href="/"> GO Back</a>
+@endsection

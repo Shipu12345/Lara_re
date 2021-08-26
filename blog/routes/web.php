@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +16,42 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $posts=Post::all();
-//    ddd($posts[0]->getContents());
-    return view('posts',[
-        'posts'=> $posts
+
+    //    $posts=[];
+
+    //    $posts=array_map(function ($file){
+//        $document=\Spatie\YamlFrontMatter\YamlFrontMatter::parseFile($file);
+//        return new Post(
+//            $document->title,
+//            $document->date,
+//            $document->excerpt,
+//            $document->body(),
+//            $document->slug);
+//    },$files);
+
+//    foreach ($files as $file){
+//        $document=\Spatie\YamlFrontMatter\YamlFrontMatter::parseFile($file);
+//        $posts[]=new Post(
+//            $document->title,
+//        $document->date,
+//        $document->excerpt,
+//        $document->body(),
+//            $document->slug
+//
+//        );
+
+//    }
+        return view('posts',[
+        'posts'=> Post::all()
     ]);
+
+
+
+//    $posts=Post::all();
+////    ddd($posts[0]->getContents());
+//    return view('posts',[
+//        'posts'=> $posts
+//    ]);
 //    return "hello World";
 });
 
