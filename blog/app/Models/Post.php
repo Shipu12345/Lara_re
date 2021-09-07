@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected  $guarded=['id'];
+
     protected  $with=['category','author'];
 
 //    protected $fillable=['title','excerpt','body','id'];
@@ -22,6 +22,10 @@ class Post extends Model
 public function category()
 {
     return $this->belongsTo(Category::class);
+}
+public function comments()
+{
+    return $this->hasMany(Comment::class);
 }
 
 public function author()
