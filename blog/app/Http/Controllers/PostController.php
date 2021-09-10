@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+
 use App\Models\Post;
+use  App\Models;
+use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Rule;
+use Symfony\Component\HttpFoundation\Response;
 
 class PostController extends Controller
 {
     //
     public function index()
     {
+//        $this->authorize('admin');
 
 
 
@@ -56,8 +63,6 @@ class PostController extends Controller
     public  function  show(Post $post){
         //Find a post by its slug and pass it to a view called "post
 
-        //    ddd($post);
-
         return view('posts.show',[
             'post'=> $post
         ]);
@@ -81,6 +86,8 @@ class PostController extends Controller
                'post'=> $post
            ]);*/
     }
+
+
 //    protected  function getPosts(){
 ////        $posts=Post::latest();
 ////

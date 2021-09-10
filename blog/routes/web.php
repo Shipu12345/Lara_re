@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
@@ -35,6 +36,18 @@ Route::post('register', [RegisterController::class, 'store'])->middleware('guest
 Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 Route::post('sessions', [SessionsController::class, 'store'])->middleware('guest');
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
+
+Route::middleware('can:admin')->group(function (){
+    Route::resource('admin/posts',AdminPostController::class)->except('show');
+//    Route::get('admin/posts/{post}/edit',[AdminPostController::class,'edit']);
+//    Route::get('admin/posts',[AdminPostController::class,'index']);
+//    Route::get('admin/posts/create',[AdminPostController::class,'create']);
+//    Route::post('admin/posts',[AdminPostController::class,'store']);
+//    Route::patch('admin/posts/{post}',[AdminPostController::class,'update']);
+//    Route::delete('admin/posts/{post}',[AdminPostController::class,'destroy']);
+});
+
+
 
 
 //Route::get('categories/{category:slug}',function (\App\Models\Category $category){
